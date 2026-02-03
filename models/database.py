@@ -14,19 +14,21 @@ class Database:
     def buscar_tudo(self, query: str, params: tuple = ()) -> list[Any]:
         self.cursor.execute(query, params)
         return self.cursor.fetchall()
-        
+    
     def close(self) -> None:
         self.connection.close()
 
     # Métodos para o gerenciamento de contexto
 
-    #Método de entrada no contexto
+    # Método de entrada no contexto
     def __enter__(self):
+        print('Entrando no contexto...')
         return self
     
-    #Método de saída do contexto
+    # Método de saída do contexto
     def __exit__(self, exc_type, exc_value, traceback):
-        self.close() 
+        print('Saindo no contexto...')
+        self.close()
 
 # try:
 #     db = Database('./data/tarefas.sqlite3')
@@ -37,8 +39,7 @@ class Database:
 #         data_conclusao TEXT);
 #     ''')
 #     db.executar('INSERT INTO tarefas (titulo_tarefa, data_conclusao) VALUES (?, ?);', ('Estudar Python', '2026-02-02'))
-
 # except Exception as e:
-#     print(f"Erro ao criar a tabela {e}")
+#     print(f"Erro ao criar a tabela: {e}")
 # finally:
 #     db.close()

@@ -10,7 +10,7 @@ def home():
 @app.route('/agenda', methods=['GET', 'POST'])
 def agenda():
     tarefa = None
-    
+
     if request.method == 'POST':
         titulo_tarefa = request.form['titulo-tarefa']
         data_conclusao = request.form['data-conclusao']
