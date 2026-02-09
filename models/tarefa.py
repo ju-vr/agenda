@@ -13,3 +13,5 @@ class Tarefa:
             query: str = "INSERT INTO tarefas (titulo_tarefa, data_conclusao) VALUES (?, ?);"
             params: tuple = (self.titulo_tarefa, self.data_conclusao)
             db.executar(query, params)
+
+            

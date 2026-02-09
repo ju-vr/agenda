@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
 from models.tarefa import Tarefa
 
 app = Flask(__name__)
@@ -7,18 +7,41 @@ app = Flask(__name__)
 def home():
     return render_template('home.html', titulo='Home')
 
-@app.route('/agenda', methods=['GET', 'POST'])
-def agenda():
-    tarefa = None
-
-    if request.method == 'POST':
-        titulo_tarefa = request.form['titulo-tarefa']
-        data_conclusao = request.form['data-conclusao']
-        tarefa = Tarefa(titulo_tarefa, data_conclusao)
-        tarefa.salvar_tarefa()
-
-    return render_template('agenda.html', titulo='Agenda', tarefa=tarefa)
 
 @app.route('/ola')
 def ola_mundo():
-    return "Olá, Mundo!"
+    return "olá, mundo"
+
+@app.route('/agenda', methods=['GET', 'POST'])
+def agenda():
+    tarefas = None
+    
+    if request.method == 'POST':
+        titulo_tarefa = request.form ['titulo-tarefa']
+        data_conclusao = request.form['data-conclusao']
+        tarefa = Tarefa(titulo_tarefa, data_conclusao) 
+        tarefa.salvar_tarefa()
+
+    tarefas = Tarefa.obter_tarefas()
+    return render_template('agenda.html', titulo= 'Agenda', tarefas=tarefas)
+
+@app.route('/delete/<int:idTarefa>')
+def delete(idTarefa):
+    tarefa = Tarefa.id(idTarefa)
+    tarefa.excluir_tarefa()
+    return redirect(url_for('agenda'))
+
+@app.route('/update/<int:idTarefa>' , methods=['GET', 'POST'])
+def update(idTarefa):
+
+    if request.method == 'POST':
+        titulo = request.form ['titulo-tarefa']
+        data = request.form['data-conclusao']
+        tarefa = Tarefa(titulo, data, idTarefa) 
+        tarefa.atualizar_tarefa()
+        return redirect(url_for('agenda'))
+    
+    tarefas = Tarefa.obter_tarefas()
+    tarefa_selecionada = Tarefa.id(idTarefa)
+
+    return render_template('agenda.html', titulo= 'Agenda', tarefas=tarefas, tarefa_selecionada=tarefa_selecionada)
