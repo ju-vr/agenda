@@ -1,117 +1,78 @@
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+html, body {
+    min-height: 100%;
 }
 
-.pagina {
-    min-height: 100vh;
+p {
+    color: #6b5b95; 
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Pacifico', cursive;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
-
 
 h1 {
-    margin-bottom: 20px;
-}
-
-
-form {
-    background-color: white;
-    padding: 20px;
-    width: 320px;
-
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-
-    display: flex;
-    flex-direction: column;
-}
-
-
-form input {
-    margin-bottom: 12px;
-    padding: 10px;
-    font-size: 14px;
-
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-form input:focus {
-    outline: none;
-    border-color: #b546e5;
-}
-
-
-form button {
-    padding: 10px;
-    background-color: #c546e5;
-    color: white;
-
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #7f2bc9;
-}
-
-
-.tarefa {
-    margin-top: 20px;
-    width: 320px;
-    background-color: white;
-    padding: 15px;
-
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-
     text-align: center;
+    font-size: 2.6rem;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #8d7bbd;
+    margin-bottom: 15px;
 }
 
-.tarefa h3 {
-    margin-bottom: 5px;
+h2 {
+    font-family: 'Segoe UI', sans-serif;
+    color: #a084ca;
 }
 
-.tarefa .data {
-    font-size: 13px;
-    color: #667;
+body {
+    background-color: #faf7fc; 
+    text-align: center;
+    border-left: 40px solid #e6d9f2;
+    border-right: 40px solid #e6d9f2;
+    padding: 20px;
 }
-.home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-
-.boas-vindas {
-    font-size: 18px;
-    color: #333;
-}
-
-
-.botao-link {
+a {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 1.4rem;
+    color: #b583c7;
     text-decoration: none;
-    background-color: #ed3cc4;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-weight: bold;
-
-    transition: background-color 0.3s;
 }
 
+a:hover {
+    text-decoration: underline;
+}
 
-.botao-link:hover {
-    background-color: #dc57ed;
+input {
+    background-color: #f2ecfb;
+    border: 1px solid #d8cdee;
+    border-radius: 12px;
+    padding: 8px;
+}
+button {
+    background-color: #e9defa;
+    border: 1px solid #cbb8e6;
+    border-radius: 14px;
+    padding: 8px 14px;
+    cursor: pointer;
+    color: #5f4b8b;
+}
+button:hover {
+    background-color: #dccdf3;
+}
+.Notas {
+    position: fixed;
+    font-size: 1.8rem;
+    color: #d16ba5; 
+    animation: flutuar 2s infinite ease-in-out;
+    z-index: 1000;
+}
+
+.Notas.esquerda { left: 15px; top: 30%; }
+.Notas.direita { right: 15px; top: 45%; }
+
+@keyframes flutuar {
+    0% { opacity: 0.4; transform: translateY(0) scale(0.95); }
+    50% { opacity: 1; transform: translateY(-10px) scale(1.05); }
+    100% { opacity: 0.4; transform: translateY(0) scale(0.95); }
 }
 
 
