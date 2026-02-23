@@ -1,13 +1,13 @@
-# Arquivos compilados do python 
-__pycache__
-*.pyc
+# Ambiente virtual
+.venv/ 
+
+__pycache__/
 *.pyc
 
-# Banco de dados SQLite 
+
 data/
 *.db
 *.sqlite
 *.sqlite3
 
-# variaveis de ambiente 
 .env
